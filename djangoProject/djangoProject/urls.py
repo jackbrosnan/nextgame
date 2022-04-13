@@ -18,7 +18,6 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.auth import views as auth_views
 from django.urls import path, include, re_path
-from django.conf.urls import url
 from django.views.static import serve
 from NextGame import views as v
 
@@ -38,8 +37,6 @@ urlpatterns = [
     path('delete_liked_game/<id>', v.delete_liked_game, name="delete-game"),
     path('recommendations', v.recommendations, name="recommendations"),
     path('', include("django.contrib.auth.urls")),
-    url(r'^media/(?P<path>.*)$', serve,{'document_root':       settings.MEDIA_ROOT}), 
-    url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
