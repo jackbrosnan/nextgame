@@ -6,7 +6,7 @@ Django==3.2.5
 django-crispy-forms==1.14.0
 greenlet==1.1.1
 importlib-metadata==4.11.3
-mkl-random==1.2.2
+mkl-random==1.2.0
 mkl-service==2.4.0
 numexpr==2.8.1
 numpy==1.21.5
