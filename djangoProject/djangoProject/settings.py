@@ -81,10 +81,10 @@ WSGI_APPLICATION = 'djangoProject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'NextGame',
-        'USER': 'postgres',
-        'PASSWORD': 'root',
-        'HOST': '127.0.0.1',
+        'NAME': 'd3l0bfjk70a9md',
+        'USER': 'rszlhdtnvunlix',
+        'PASSWORD': '9524f2fd4b4bea0fadedcf8aea8bff8ee9fd5fe4355fb7d581915e7f58386b68',
+        'HOST': 'ec2-99-80-170-190.eu-west-1.compute.amazonaws.com',
         'PORT': '5432',
     }
 }
