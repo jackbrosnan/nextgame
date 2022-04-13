@@ -1,0 +1,78 @@
+{% extends 'main/base.html' %}
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{{ form.media.js }}
+
+{% block title %}
+NextGame - Add liked games
+{% endblock %}
+
+{% block content %}
+    <div class="col-md-10">
+        <div class="content-section">
+        <center>
+        <h2 class="text-dark mb-3">Add your Most Liked Games!</h2>
+        <br>
+        <form id="game-form", action="{% url 'liked-games' %}", method="POST", class="form-group", style="width: 500px;">
+             <fieldset class="form-group" style="padding: 10px;">
+                <legend class="border-bottom border-dark mb-md-5"></legend>
+                 {% csrf_token %}
+                {% for foo in form %}
+                 <div id="autocomplete-1" class="autocomplete">
+                     {{ foo }}
+                  <ul class="autocomplete-result-list"></ul>
+                </div>
+                 {% endfor %}
+            </fieldset>
+            <div class="form-group">
+                <button type="submit", value="Submit", class="btn btn-secondary">Submit</button>
+            </div>
+                  {% if messages %}
+            {% for message in messages %}
+              {% if message.tags == "error"%}
+              <div class="alert alert-danger">
+                {{ message }}
+              </div>
+              {% else %}
+              <div class="alert alert-success">
+                {{ message }}
+              </div>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        </form>
+
+            {% if all_liked %}
+                <br>
+                <legend class="border-bottom border-dark mb-5"></legend>
+                <h2 class="text-dark mb-3">
+                    My Liked Games
+                </h2>
+            <div class="justify-content-center">
+                <table class="table table-striped border mb-4">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Cover</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for id, value in all_liked.items %}
+                        <tr>
+                            <th scope="row"><img src="https://images.igdb.com/igdb/image/upload/t_cover_small/{{ value|last }}"></th>
+                            <td style="padding-top: 60px;">{{ value|first }}</td>
+                            <td style="padding-top: 50px;"><a class="btn btn-danger" href="{% url 'delete-game' id %}">Delete</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+            </div>
+        </center>
+            </div>
+        </div>
+
+{% endblock %}

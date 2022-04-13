@@ -1,0 +1,53 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/main.css' %}" media="screen">
+
+{% block content %}
+<div class="col-md-10">
+        <div class="content-section">
+            <center>
+            <div style="padding: 15px;">
+              <h1 class="mb-3">NextGame</h1>
+              <p class="">The goal of NextGame is to provide a more refined and personal set of game recommendations to gamers.</p>
+              <p class="">NextGame uses an aesthetics matching algorithm in combination with a genre tag ranking algorithm to determine game recommendations based off the games you submit.</p>
+            </div>
+
+              <legend class="border-bottom border-dark mb-md-5"></legend>
+                <h2 class="mb-2">Instructions</h2>
+                <span style="font-size: 0.875rem; font-style: italic;">Follow the instructions directly below in order to use NextGame</span>
+            </center>
+            <br>
+
+
+        <div class="card-group">
+          <div class="card" id="card-css">
+            <img src="/static/images/register_image.png" id="img1"  style="height: 240px; width: 100%;" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">1. Register</h5>
+              <p class="card-text">Register an account on Nextgame and then Log in.</p>
+                <a href="{% url 'register' %}" class="btn btn-primary">Register</a>
+            </div>
+          </div>
+          <div class="card" id="card-css">
+            <img src="/static/images/submit_img.png" style="height: 240px; width: 100%;" class="card-img-top" id="img2" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">2. Submit Games</h5>
+              <p class="card-text">Search and add some of your favourite games in order for NextGame to determine the best games suited for you.</p>
+              <a href="{% url 'liked-games' %}" class="btn btn-primary">Add Liked Games</a>
+            </div>
+          </div>
+          <div class="card" id="card-css">
+            <img src="/static/images/Rec_image.jpeg" id="img3" style="height: 240px; width: 100%;" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">3. Recommendations</h5>
+              <p class="card-text">You can then go to the "Recommendations" page to view your tailored recommendations that NextGame has chosen for you.</p>
+              <a href="{% url 'recommendations' %}" class="btn btn-primary">Recommendations</a>
+            </div>
+          </div>
+        </div>
+        </div>
+
+
+
+{% endblock %}

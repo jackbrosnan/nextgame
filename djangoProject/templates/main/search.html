@@ -1,0 +1,52 @@
+{% extends 'main/base.html' %}
+
+{% block title %}NextGame - Search{% endblock %}
+
+{% block content %}
+
+<div class="col-md-8">
+    <div class="content-section">
+        <center><h2>Search for Game</h2>
+        <legend class="border-bottom mb-4"></legend>
+        <div id="autocomplete" class="autocomplete">
+              <input class="autocomplete-input"
+                placeholder="Search"
+                aria-label="Search for a game">
+            <ul class="autocomplete-result-list"></ul>
+        </div>
+        </center>
+        <br>
+         {% if messages %}
+            {% for message in messages %}
+              {% if message.tags == "error"%}
+              <div class="alert alert-danger">
+                {{ message }}
+              </div>
+              {% else %}
+              <div class="alert alert-success">
+                {{ message }}
+              </div>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+    </div>
+</div>
+
+<div class="col-md-4">
+        <div class="content-section">
+        <center><h3>Search by Genre</h3></center>
+        <legend class="border-bottom mb-4"></legend>
+        <center>
+        <p class="font-weight-bold">Top 5 most popular genres:</p>
+            </center>
+        <div class="list-group list-group-numbered">
+          <a href="{% url 'search-genre' 'Shooter' %}" class="list-group-item list-group-item-action"><span class="badge badge-secondary">1</span> Shooter</a>
+          <a href="{% url 'search-genre' 'Role-playing' %}" class="list-group-item list-group-item-action"><span class="badge badge-secondary">2</span> Role-playing(RPG)</a>
+          <a href="{% url 'search-genre' 'Adventure' %}" class="list-group-item list-group-item-action"><span class="badge badge-secondary">3</span> Adventure</a>
+          <a href="{% url 'search-genre' 'Sport' %}" class="list-group-item list-group-item-action"><span class="badge badge-secondary">4</span> Sport</a>
+          <a href="{% url 'search-genre' 'Puzzle' %}" class="list-group-item list-group-item-action"><span class="badge badge-secondary">5</span> Puzzle</a>
+        </div>
+
+        </div>
+      </div>
+{% endblock %}
